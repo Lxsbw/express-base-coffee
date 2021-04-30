@@ -1,0 +1,29 @@
+{
+  "name": "express-base-coffee",
+  "version": "0.0.1",
+  "description": "Node.js & Express & CoffeeScript & MVC & mongoose & swagger",
+  "scripts": {
+    "dev": "coffee ./src/app.coffee",
+    "build": "rimraf dist && coffee -o dist -c -b src",
+    "prd": "pm2 start ./dist/app.js --name=express-base-coffee",
+    "stop": "pm2 stop express-base-coffee && pm2 delete express-base-coffee",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "del": "rimraf node_modules dist yarn.lock"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lxsbw/express-base-coffee.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "coffeescript": "^2.5.1",
+    "express": "^4.17.1",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
