@@ -7,6 +7,7 @@ dist/
 
 npm-debug.log
 yarn-error.log
+yarn.lock
 package-lock.json
 .DS_Store
 *.sw*
