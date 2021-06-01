@@ -1,4 +1,7 @@
-sysConfig = {
+config = exports? and exports
+# config = (typeof exports !== "undefined" && exports !== null) && exports;
+
+config.sysConfig = {
   host: 'localhost'
   port: 8001
 }
@@ -11,10 +14,33 @@ mongoConf = {
   db: 'testdb'
 }
 
-getMongoUrl = () ->
+config.getMongoUrl = () ->
   mongoUrl = 'mongodb://'
   dbName = mongoConf.db
   mongoUrl += "#{mongoConf.user}:#{mongoConf.pass}@#{mongoConf.host}:#{mongoConf.port}"
   mongoUrl += "/#{dbName}"
 
-module.exports = { sysConfig, getMongoUrl }
+apicoffeeFiles = [
+    './src/controller'
+    './src/schema/request'
+  ]
+
+apiJSFiles = [
+    './dist/controller'
+    './dist/schema/request'
+  ]
+
+getCoffeeFiles = () ->
+  apicoffeeFiles.map (m) -> "#{m}/*.coffee"
+
+getJSFiles = () ->
+  apiJSFiles.map (m) -> "#{m}/*.js"
+
+config.getApiFiles = () ->
+  files = [].concat getCoffeeFiles(), getJSFiles()
+  # files = getJSFiles()
+  # console.log 'files:', files
+  # files
+
+config.getApiPath = () ->
+  apiJSFiles

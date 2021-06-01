@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "description": "Node.js & Express & CoffeeScript & MVC & mongoose & swagger",
   "scripts": {
+    "apidoc": "node ./dist/handle/apihandle.js",
     "start": "npm run build && node dist/app.js",
-    "dev": "nodemon --watch 'src/' -e coffee ./src/app.coffee",
-    "build": "rimraf dist && coffee -o dist -c -b src",
+    "dev": "nodemon --watch 'src/*' -e coffee ./src/app.coffee",
+    "build": "rimraf dist && coffee -o dist -c -b src && npm run apidoc",
     "prd": "pm2 start ./dist/app.js --name=express-base-coffee",
     "stop": "pm2 stop express-base-coffee && pm2 delete express-base-coffee",
     "test": "echo \"Error: no test specified\" && exit 1",
