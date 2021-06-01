@@ -15,10 +15,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@lxsbw/express-swagger-ui": "~1.0.1",
     "body-parser": "~1.19.0",
     "coffeescript": "~2.5.1",
     "express": "~4.17.1",
-    "rimraf": "~3.0.2"
+    "rimraf": "~3.0.2",
+    "swagger-jsdoc": "~6.0.1"
   },
   "devDependencies": {
     "nodemon": "~2.0.7"

@@ -2,6 +2,8 @@ express = require 'express'
 bodyParser = require 'body-parser'
 { sysConfig } = require './config/config.default' # 配置
 { appRouters } = require './routes/router' # 路由
+swagger = require './config/swagger'
+{ expressSwagger } = require '@lxsbw/express-swagger-ui'
 
 class App
   constructor: () ->
@@ -9,6 +11,7 @@ class App
     @app = express()
     @middleware()
     @routes()
+    @swaggerInit()
     @launchConf()
 
   middleware: () ->
@@ -17,6 +20,15 @@ class App
 
   routes: () ->
     @app.use appRouters
+
+  swaggerInit: () ->
+    @app.use swagger
+    @app.use expressSwagger({
+        routePrefix: '/api-docs/swagger', # host at /swagger instead of default /docs
+        swaggerOptions: {
+          url: '/swagger.json' # example path to json 其实就是之后swagger-jsdoc生成的文档地址
+        }
+      })
 
   launchConf: () ->
     console.log '===================================='
