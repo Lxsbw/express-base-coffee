@@ -5,9 +5,9 @@ swaggerJSDoc = require 'swagger-jsdoc'
 
 swaggerDefinition = {
   info: {
-    description: 'This is a sample server Koa2 server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.',
+    description: 'This is a sample server Express server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.',
     version: '1.0.0',
-    title: 'Koa2 Swagger',
+    title: 'Express Swagger',
     # 服务条款
     # termsOfService: 'http://swagger.io/terms/',
     contact: {
@@ -45,7 +45,7 @@ swaggerDefinition = {
 options = {
   swaggerDefinition,
   # 写有注解的router的存放地址(当你新增swagger时文档里没显示出来的话那么就是这边地址没有加进去)
-  apis: ['./src/routes/*.coffee']
+  apis: ['./src/controller/*.coffee', './src/schema/request/*.coffee']
 }
 
 # development

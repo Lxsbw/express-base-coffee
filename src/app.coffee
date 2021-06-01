@@ -1,17 +1,19 @@
 express = require 'express'
 bodyParser = require 'body-parser'
-{ sysConfig } = require './config/config.default' # 配置
-{ appRouters } = require './routes/router' # 路由
-swagger = require './config/swagger'
+mongoose = require 'mongoose'
 { expressSwagger } = require '@lxsbw/express-swagger-ui'
+swagger = require './config/swagger'
+{ appRouters } = require './routes/router' # 路由
+{ sysConfig, getMongoUrl } = require './config/config.default' # 配置
 
 class App
   constructor: () ->
     console.log 'app初始化'
     @app = express()
     @middleware()
-    @routes()
     @swaggerInit()
+    @routes()
+    @mongo()
     @launchConf()
 
   middleware: () ->
@@ -20,6 +22,23 @@ class App
 
   routes: () ->
     @app.use appRouters
+
+  mongo: () ->
+    console.log getMongoUrl()
+    mongoose.connect(getMongoUrl(), {
+        useCreateIndex: true,
+        poolSize: 5, # 连接池中维护的连接数
+        useNewUrlParser: true,
+        autoIndex: false,
+        useUnifiedTopology: true
+        # keepAlive: 120,
+      })
+      .then((open) ->
+        console.log '📚  mongodb is launching...'
+      )
+      .catch((err) ->
+        console.error.bind console, "connection error:#{err}"
+      )
 
   swaggerInit: () ->
     @app.use swagger

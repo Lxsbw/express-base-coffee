@@ -1,35 +1,20 @@
 { Router }  = require 'express'
+MobilePhone = require '../controller/mobile-phone'
 
 class AppRouter
-
   constructor: () ->
     @appRouter = Router()
     @init()
 
   init: () ->
-    ###
-     * @swagger
-     * /api/mobile-phone/findone:
-     *   get:
-     *     summary: id查找
-     *     description: id查找
-     *     tags: [MobilePhone]
-     *     deprecated: false
-     *     parameters:
-     *     - in: "query"
-     *       name: "_id"
-     *       type: "string"
-     *       required: true
-     *       description: "id"
-     *     responses:
-     *       '200':
-     *         description: OK
-    ###
-    @appRouter.get '/api', (req, res) ->
-      res.send 'Hello, Express CoffeeScript'
+    @appRouter.get '/api/mobile-phone/findone', MobilePhone.findOne
+    @appRouter.get '/api/mobile-phone/findall', MobilePhone.findall
+    @appRouter.post '/api/mobile-phone/create', MobilePhone.create
+    @appRouter.put '/api/mobile-phone/update', MobilePhone.update
+    @appRouter.delete '/api/mobile-phone/delete', MobilePhone.delete
 
     @appRouter.get '/', (req, res) ->
-      res.send 'Hello, Express CoffeeScript'
+      res.send 'Hello, Express CoffeeScript!'
 
 
 appRouters = new AppRouter().appRouter
