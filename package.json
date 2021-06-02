@@ -4,10 +4,10 @@
   "description": "Node.js & Express & CoffeeScript & MVC & mongoose & swagger",
   "scripts": {
     "apidoc": "node ./dist/handle/apihandle.js",
-    "start": "npm run build && node dist/app.js",
-    "dev": "nodemon --watch 'src/*' -e coffee ./src/app.coffee",
+    "start": "npm run build && cross-env NODE_ENV=production node dist/app.js",
+    "dev": "cross-env NODE_ENV=development nodemon --watch 'src/*' -e coffee ./src/app.coffee",
     "build": "rimraf dist && coffee -o dist -c -b src && npm run apidoc",
-    "prd": "pm2 start ./dist/app.js --name=express-base-coffee",
+    "prd": "cross-env NODE_ENV=production pm2 start ./dist/app.js --name=express-base-coffee",
     "stop": "pm2 stop express-base-coffee && pm2 delete express-base-coffee",
     "test": "echo \"Error: no test specified\" && exit 1",
     "del": "rimraf node_modules dist yarn.lock"
@@ -19,6 +19,7 @@
     "@lxsbw/express-swagger-ui": "~1.0.1",
     "body-parser": "~1.19.0",
     "coffeescript": "~2.5.1",
+    "cross-env": "~7.0.3",
     "express": "~4.17.1",
     "mongoose": "~5.11.10",
     "rimraf": "~3.0.2",

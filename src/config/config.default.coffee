@@ -20,27 +20,16 @@ config.getMongoUrl = () ->
   mongoUrl += "#{mongoConf.user}:#{mongoConf.pass}@#{mongoConf.host}:#{mongoConf.port}"
   mongoUrl += "/#{dbName}"
 
-apicoffeeFiles = [
-    './src/controller'
-    './src/schema/request'
-  ]
+apiCoffeeFiles = ['./src/controller', './src/schema/request']
+apiJSFiles = ['./dist/controller', './dist/schema/request']
 
-apiJSFiles = [
-    './dist/controller'
-    './dist/schema/request'
-  ]
-
-getCoffeeFiles = () ->
-  apicoffeeFiles.map (m) -> "#{m}/*.coffee"
-
-getJSFiles = () ->
-  apiJSFiles.map (m) -> "#{m}/*.js"
-
-config.getApiFiles = () ->
-  files = [].concat getCoffeeFiles(), getJSFiles()
-  # files = getJSFiles()
+config.getApiFiles = (env) ->
+  if process.env.NODE_ENV is 'development'
+    files =  apiCoffeeFiles.map (m) -> "#{m}/*.coffee"
+  else
+    files =  apiJSFiles.map (m) -> "#{m}/*.js"
   # console.log 'files:', files
-  # files
+  files
 
 config.getApiPath = () ->
   apiJSFiles

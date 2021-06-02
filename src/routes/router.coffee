@@ -12,6 +12,7 @@ class AppRouter
     @appRouter.post '/api/mobile-phone/create', MobilePhone.create
     @appRouter.put '/api/mobile-phone/update', MobilePhone.update
     @appRouter.delete '/api/mobile-phone/delete', MobilePhone.delete
+    @appRouter.get '/api/hello', MobilePhone.hello
 
     @appRouter.get '/', (req, res) ->
       res.send 'Hello, Express CoffeeScript!'

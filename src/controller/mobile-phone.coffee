@@ -116,4 +116,19 @@ class MobilePhoneController extends BaseController
     console.log('controller : ', JSON.stringify(req.body))
     res.json(await MobilePhoneService.delete req.body)
 
+  ###
+   * @swagger
+   * /api/hello:
+   *   get:
+   *     summary: env Test
+   *     description: env Test
+   *     tags: [Default]
+   *     deprecated: false
+   *     responses:
+   *       '200':
+   *         description: OK
+  ###
+  hello: (req, res, next) ->
+    res.json({ APPenv: APP.get('env'), Nenv: process.env.NODE_ENV, Penv: process.env })
+
 module.exports = new MobilePhoneController()
