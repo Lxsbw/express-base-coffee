@@ -4,6 +4,8 @@ coverage/
 .idea/
 run/
 dist/
+vs/.vs
+obj/
 
 npm-debug.log
 yarn-error.log
@@ -12,3 +14,4 @@ package-lock.json
 .DS_Store
 *.sw*
 *.un~
+*.njsproj.user
