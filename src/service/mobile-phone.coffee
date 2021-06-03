@@ -52,12 +52,10 @@ class MobilePhoneService extends BaseService
 
     result = await mobilePhoneModel
       .updateOne({ _id: param._id }, conditions)
-      .then((data) ->
+      .then (data) ->
         return Object.assign data, { state: 'Success' }
-      )
-      .catch((err) ->
+      .catch (err) ->
         return { state: 'Fail', mess: err }
-      )
 
     console.log('service result: ' + result)
 
@@ -69,16 +67,13 @@ class MobilePhoneService extends BaseService
 
     result = await mobilePhoneModel
       .deleteOne({ _id: param._id })
-      .then((data) ->
+      .then (data) ->
         return Object.assign data, { state: 'Success' }
-      )
-      .catch((err) ->
+      .catch (err) ->
         return { state: 'Fail', mess: err }
-      )
 
     console.log('service result: ' + JSON.stringify(result))
 
     return result
-
 
 module.exports = new MobilePhoneService()
