@@ -23,7 +23,7 @@ config.getMongoUrl = () ->
 apiCoffeeFiles = ['./src/controller', './src/schema/request']
 apiJSFiles = ['./dist/controller', './dist/schema/request']
 
-config.getApiFiles = (env) ->
+config.getApiFiles = () ->
   if process.env.NODE_ENV is 'development'
     files =  apiCoffeeFiles.map (m) -> "#{m}/*.coffee"
   else

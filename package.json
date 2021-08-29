@@ -10,8 +10,7 @@
     "prd": "cross-env NODE_ENV=production pm2 start ./dist/app.js --name=express-base-coffee",
     "stop": "pm2 stop express-base-coffee && pm2 delete express-base-coffee",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "del": "rimraf node_modules dist yarn.lock",
-    "prettier": "prettier"
+    "del": "rimraf node_modules dist yarn.lock"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +18,7 @@
   "dependencies": {
     "@lxsbw/express-swagger-ui": "~1.0.1",
     "body-parser": "~1.19.0",
-    "coffeescript": "~2.5.0",
+    "coffeescript": "~2.5.1",
     "cross-env": "~7.0.3",
     "express": "~4.17.1",
     "mongoose": "~5.11.10",
@@ -27,8 +26,6 @@
     "swagger-jsdoc": "~6.0.1"
   },
   "devDependencies": {
-    "nodemon": "~2.0.7",
-    "prettier": "github:helixbass/prettier#prettier-v2.1.0-dev.100-gitpkg",
-    "prettier-plugin-coffeescript": "^0.1.5"
+    "nodemon": "~2.0.7"
   }
 }
