@@ -4,7 +4,7 @@ mongoose = require 'mongoose'
 { expressSwagger } = require '@lxsbw/express-swagger-ui'
 swagger = require './config/swagger'
 { appRouters } = require './routes/router' # 路由
-{ sysConfig, getMongoUrl } = require './config/config.default' # 配置
+{ sysConfig, getMongoUrl, env } = require './config/config.default' # 配置
 
 class App
   constructor: () ->
@@ -26,6 +26,7 @@ class App
 
   mongo: () ->
     console.log getMongoUrl()
+    mongoose.set('debug', env.DEBUG)
     mongoose.connect(getMongoUrl(), {
         useCreateIndex: true,
         poolSize: 5, # 连接池中维护的连接数
