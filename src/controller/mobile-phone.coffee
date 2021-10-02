@@ -4,14 +4,14 @@ MobilePhoneService = require '../service/mobile-phone'
 class MobilePhoneController extends BaseController
   ###
    * @swagger
-   * /api/mobile-phone/findone:
+   * /api/mobile-phone/findone/{_id}:
    *   get:
    *     summary: id查找
    *     description: id查找
    *     tags: [MobilePhone]
    *     deprecated: false
    *     parameters:
-   *     - in: "query"
+   *     - in: "path"
    *       name: "_id"
    *       type: "string"
    *       required: true
@@ -21,8 +21,8 @@ class MobilePhoneController extends BaseController
    *         description: OK
   ###
   findOne: (req, res, next) ->
-    console.log('controller : ', JSON.stringify(req.query._id))
-    res.json(await MobilePhoneService.findOne { _id: req.query._id })
+    console.log('controller : ', JSON.stringify(req.params))
+    res.json(await MobilePhoneService.findOne { _id: req.params._id })
 
   ###
    * @swagger
@@ -91,6 +91,28 @@ class MobilePhoneController extends BaseController
    *         description: OK
   ###
   update: (req, res, next) ->
+    console.log('controller : ', JSON.stringify(req.body))
+    res.json(await MobilePhoneService.update req.body)
+
+  ###
+   * @swagger
+   * /api/mobile-phone/patch:
+   *   patch:
+   *     summary: 更新手机
+   *     description: 更新手机
+   *     tags: [MobilePhone]
+   *     parameters:
+   *     - in: "body"
+   *       name: "MobilePhoneUpdPatch"
+   *       description: "手机信息"
+   *       required: true
+   *       schema:
+   *         $ref: "#/definitions/MobilePhoneUpdPatch"
+   *     responses:
+   *       '200':
+   *         description: OK
+  ###
+  updateByPatch: (req, res, next) ->
     console.log('controller : ', JSON.stringify(req.body))
     res.json(await MobilePhoneService.update req.body)
 

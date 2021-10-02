@@ -7,10 +7,11 @@ class AppRouter
     @init()
 
   init: () ->
-    @appRouter.get '/api/mobile-phone/findone', MobilePhone.findOne
+    @appRouter.get '/api/mobile-phone/findone/:_id', MobilePhone.findOne
     @appRouter.get '/api/mobile-phone/findall', MobilePhone.findall
     @appRouter.post '/api/mobile-phone/create', MobilePhone.create
     @appRouter.put '/api/mobile-phone/update', MobilePhone.update
+    @appRouter.patch '/api/mobile-phone/patch', MobilePhone.updateByPatch
     @appRouter.delete '/api/mobile-phone/delete', MobilePhone.delete
     @appRouter.get '/api/hello', MobilePhone.hello
 

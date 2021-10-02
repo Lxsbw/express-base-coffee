@@ -85,6 +85,27 @@
 ###
  * @swagger
  * definitions:
+ *   MobilePhoneUpdPatch:
+ *     type: "object"
+ *     required:
+ *     - "_id"
+ *     - "model_name"
+ *     properties:
+ *       _id:
+ *         type: "string"
+ *         description: "id"
+ *         example: "xx"
+ *       model_name:
+ *         type: "string"
+ *         description: "手机型号"
+ *         example: "xx"
+ *     xml:
+ *       name: "MobilePhoneUpdPatch"
+###
+
+###
+ * @swagger
+ * definitions:
  *   MobilePhoneDel:
  *     type: "object"
  *     required:
