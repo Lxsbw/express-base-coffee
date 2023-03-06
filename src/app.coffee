@@ -28,11 +28,11 @@ class App
     console.log getMongoUrl()
     mongoose.set('debug', env.DEBUG)
     mongoose.connect(getMongoUrl(), {
-        useCreateIndex: true,
-        poolSize: 5, # 连接池中维护的连接数
-        useNewUrlParser: true,
+        # useCreateIndex: true,
+        maxPoolSize: 5, # 连接池中维护的连接数
+        # useNewUrlParser: true,
         autoIndex: false,
-        useUnifiedTopology: true
+        # useUnifiedTopology: true
         # keepAlive: 120,
       })
       .then (open) ->
